@@ -1,0 +1,9 @@
+.dashboard {
+	padding-bottom: 40px;
+}
+
+.article {
+	&:not(:last-child) {
+		margin-bottom: 12px;
+	}
+}
