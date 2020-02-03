@@ -1,24 +1,20 @@
 <template>
   <header class="header">
     <div class="left-col">
-      <router-link :to="'/' + $i18n.locale">{{ $t('HomeLink') }}</router-link>
+      <router-link :to="'/' + $i18n.locale">{{ $t("HomeLink") }}</router-link>
     </div>
     <div class="middle-col">
-      <span>{{pageName}}</span>
+      <span>{{ pageName }}</span>
     </div>
     <div class="right-col">
-    <select v-model="$i18n.locale">
-      <option
-        v-for="(lang, i) in langs"
-        :key="`Lang${i}`"
-        :value="lang"
-        >{{ lang }}</option>
-    </select>
-      <router-link :to="'/' + $i18n.locale + '/dashboard/page=1'">{{ $t('Dashboard') }}</router-link>
-      <router-link v-if="!user" :to="'/' + $i18n.locale + '/login'">{{ $t('Login') }}</router-link>
-      <router-link dusk="register-link" v-if="!user" :to="'/' + $i18n.locale + '/register'">{{ $t('Register') }}</router-link>
-      <span v-if="user">{{user.email}}</span>
-      <span v-if="user" class="logout-btn" @click.prevent="logout" >{{ $t('LogoutLink') }}</span>
+      <select v-model="$i18n.locale">
+        <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">{{
+          lang
+        }}</option>
+      </select>
+      <router-link :to="'/' + $i18n.locale + '/dashboard/page=1'">{{
+        $t("Dashboard")
+      }}</router-link>
     </div>
   </header>
 </template>
@@ -28,12 +24,12 @@
 export default {
   data() {
     return {
-    langs: ['ru', 'en']
+      langs: ["ru", "en"]
     };
   },
   computed: {
     user() {
-      return this.$store.state.user
+      return this.$store.state.user;
     }
   },
   props: {
@@ -42,29 +38,8 @@ export default {
       default: ""
     }
   },
-  components: {
-
-  },
   created() {
-    if (this.pageName === "Homepage") this.pageName = this.$t('Homepage')
-  },
-  mounted() {},
-  methods: {
-    // logout() {
-    //   axios.get('http://php-crm.com/api/auth/logout', {
-    //        'headers': { 'Authorization': this.$cookie.get('token') }
-    //       })
-    //       .then(res=>{
-    //         this.$store.dispatch('DROP_USER');
-    //         this.$cookie.delete('token');
-    //         this.$cookie.delete('rememberMe');
-    //         this.$router.push({path: `/${this.$i18n.locale}`});
-    //         console.log(res)
-    //       })
-    //       .catch(err=>{
-    //         console.log(err);
-    //       });
-    // }
+    if (this.pageName === "Homepage") this.pageName = this.$t("Homepage");
   }
 };
 </script>

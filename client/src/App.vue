@@ -3,16 +3,13 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {};
-    },
-    mounted() {
-      if (this.$route.path === "/") {
-        this.$router.push({path: `/en`});
-      }
+export default {
+  mounted() {
+    if (this.$route.path === "/") {
+      this.$router.push({ path: `/en` });
     }
-  };
+  }
+};
 </script>
 
 <style lang="scss">

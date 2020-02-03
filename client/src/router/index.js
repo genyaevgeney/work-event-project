@@ -5,7 +5,6 @@ import Homepage from "../components/Homepage.vue";
 import Dashboard from "../components/Dashboard.vue";
 import EditPage from "../components/EditPage.vue";
 import ErrorPage from "../components/Error.vue";
-
 import { i18n } from "../main.js";
 
 Vue.use(Router);
