@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreNews;
 use App\Services\Article\ArticleService;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ArticleController extends Controller
 {
@@ -43,8 +44,8 @@ class ArticleController extends Controller
     public function store(StoreNews $request)
     {
         $validated = $request->validated();
-
-        return $this->articleService->create($validated);
+        $this->articleService->create($validated);
+        return 'Article has been created succesfully';
     }
 
     /**
@@ -78,7 +79,20 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate(
+            [
+                'title' => [
+                    'required',
+                    'max:30',
+                    'min:3',
+                    Rule::unique('articles')->ignore($id),
+                ],
+                'subtitle' => 'required|max:100|min:3',
+                'content' => 'required'
+            ]
+        );
+        $this->articleService->update($validated, $id);
+        return 'Article has been updated succesfully';
     }
 
     /**

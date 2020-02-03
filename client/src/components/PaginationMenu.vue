@@ -3,9 +3,9 @@
       {{ createIterator() }}
       <ul v-if="backendData.pages > 1" class="pagination text-center">
         <li v-if="backendData.current_page == 1" class="disabled">
-          <span>First</span>
+          <span>{{ $t('First') }}</span>
         </li>
-        <li v-else><router-link to="page=1">First</router-link></li>
+        <li v-else><router-link to="page=1">{{ $t('First') }}</router-link></li>
         <li v-if="iterator !== 1" class="disabled"><span>...</span></li>
         <template v-for="i in backendData.pages">
           <template
@@ -36,10 +36,10 @@
           v-if="backendData.current_page == backendData.pages"
           class="disabled"
         >
-          <span>Last</span>
+          <span>{{ $t('Last') }}</span>
         </li>
         <li v-else>
-          <router-link :to="'page=' + backendData.pages">Last</router-link>
+          <router-link :to="'page=' + backendData.pages">{{ $t('Last') }}</router-link>
         </li>
       </ul>
     </div>

@@ -5,5 +5,14 @@
 	"Dashboard": "Dashboard",
 	"LogoutLink": "Logout",
 	"Homepage": "Homepage",
-	"Dashboard": "Dashboard"
+	"Dashboard": "Dashboard",
+	"Articles": "Articles",
+	"Title": "Title",
+	"Subtitle": "Subtitle",
+	"Body": "Body",
+	"Save": "Save",
+	"Edit": "Edit",
+	"Delete": "Delete",
+	"First": "First",
+	"Last": "Last"
 }

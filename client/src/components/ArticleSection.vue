@@ -1,11 +1,11 @@
 <template>
   <div class="article-section">
-    <h2 class="headline">Articles</h2>
-    <input v-model="formData.title" type="text" placeholder="Title">
-    <input v-model="formData.subtitle" type="text" placeholder="Subtitle">
-    <textarea v-model="formData.content" placeholder="Body"></textarea>
-    <button v-if="isCreateSection" @click="createArticle">Save</button>
-    <button v-if="isEditSection" @click="editArticle">Edit</button>
+    <h2 class="headline">{{ $t('Articles') }}</h2>
+    <input v-model="formData.title" type="text" :placeholder="$t('Title')">
+    <input v-model="formData.subtitle" type="text" :placeholder="$t('Subtitle')">
+    <textarea v-model="formData.content" :placeholder="$t('Body')"></textarea>
+    <button v-if="isCreateSection" @click="createArticle">{{ $t('Save') }}</button>
+    <button v-if="isEditSection" @click="editArticle">{{ $t('Edit') }}</button>
   </div>
 </template>
 <script>
@@ -61,7 +61,17 @@
           });
       },
       editArticle() {
-
+        let data = this.formData;
+        data._method = "put";
+        axios
+          .post(`http://php-event-project.com/api/articles/${this.$route.params.id}`, data)
+          .then(response => {
+            console.log("Updated article", response);
+            this.$router.push(`/${this.$i18n.locale}/dashboard/page=1`);
+          })
+          .catch(error => {
+            console.log(error.response.data);
+          });
       }
     }
   };

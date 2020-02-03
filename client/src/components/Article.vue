@@ -3,8 +3,8 @@
     <h2 class="title">{{title}}</h2>
     <span class="subtitle">{{subtitle}}</span>
     <p class="content">{{content}}</p>
-    <router-link class="edit" :to="'/' + $i18n.locale + '/article/edit/' + id">Edit</router-link>
-    <button @click="deleteArticle" class="delete">Delete</button>
+    <router-link class="edit" :to="'/' + $i18n.locale + '/article/edit/' + id">{{ $t('Edit') }}</router-link>
+    <button @click="deleteArticle" class="delete">{{ $t('Delete') }}</button>
   </div>
 </template>
 <script>

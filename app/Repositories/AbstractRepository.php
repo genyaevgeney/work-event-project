@@ -1,14 +1,15 @@
 <?php
 namespace App\Repositories;
 
+use App\Jobs\SaveArticle;
+
 class AbstractRepository implements AbstractInterface
 {
     protected $model;
 
     public function create(array $attributes)
     {
-        $data = $this->model->create($attributes);
-        return $data;
+        dispatch(new SaveArticle($attributes));
     }
 
     public function paginate(int $rowsCount)
@@ -25,5 +26,11 @@ class AbstractRepository implements AbstractInterface
     public function read(int $id)
     {
         return $this->model->findOrFail($id);
+    }
+
+    public function update(array $attributes, int $id)
+    {
+        $object = $this->model->findOrFail($id);
+        $object->update($attributes);
     }
 }

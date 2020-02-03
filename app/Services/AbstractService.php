@@ -24,4 +24,9 @@ class AbstractService implements AbstractInterface
     {
         return $this->repository->read($id);
     }
+
+    public function update(array $data, int $id)
+    {
+      $this->repository->update($data, $id);
+    }
 }
