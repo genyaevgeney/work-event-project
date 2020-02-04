@@ -30,9 +30,8 @@ class SaveArticle implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(Article $article)
     {
-        $article = new Article;
         $article->create($this->attributes);
     }
 }

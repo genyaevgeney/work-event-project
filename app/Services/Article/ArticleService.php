@@ -7,14 +7,12 @@ use App\Services\AbstractService;
 
 class ArticleService extends AbstractService implements ArticleInterface
 {
+    protected $repository;
+    protected $paginationRowsCount;
 
-  protected $repository;
-  protected $paginationRowsCount;
-
-  public function __construct(ArticleRepository $articleRepository)
-  {
-    $this->repository = $articleRepository;
-    $this->paginationRowsCount = 3;
-  }
-
+    public function __construct(ArticleRepository $articleRepository)
+    {
+        $this->repository = $articleRepository;
+        $this->paginationRowsCount = 3;
+    }
 }

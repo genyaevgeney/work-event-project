@@ -23,7 +23,7 @@ class AbstractRepository implements AbstractInterface
         $item->delete();
     }
 
-    public function read(int $id)
+    public function getById(int $id)
     {
         return $this->model->findOrFail($id);
     }

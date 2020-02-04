@@ -1,13 +1,14 @@
 <?php
 namespace App\Services;
+
 class AbstractService implements AbstractInterface
 {
-	protected $repository;
-	protected $paginationRowsCount;
+    protected $repository;
+    protected $paginationRowsCount;
 
-	public function create(array $data)
+    public function create(array $data)
     {
-    	return $this->repository->create($data);
+        return $this->repository->create($data);
     }
 
     public function paginate()
@@ -20,13 +21,13 @@ class AbstractService implements AbstractInterface
         $this->repository->delete($id);
     }
 
-    public function read(int $id)
+    public function getById(int $id)
     {
-        return $this->repository->read($id);
+        return $this->repository->getById($id);
     }
 
     public function update(array $data, int $id)
     {
-      $this->repository->update($data, $id);
+        $this->repository->update($data, $id);
     }
 }

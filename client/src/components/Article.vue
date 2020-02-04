@@ -19,10 +19,11 @@ export default {
   methods: {
     deleteArticle() {
       axios
-        .delete(`http://php-event-project.com/api/articles/${this.id}`)
+        .delete(`${process.env.VUE_APP_BASE_URL}/api/articles/${this.id}`)
         .then(response => {
           console.log(response);
           this.$emit("delete");
+          this.$router.push(`/${this.$i18n.locale}/dashboard/page=1`);
         })
         .catch(error => {
           console.log(error.response.data);

@@ -42,13 +42,13 @@ export default {
     if (this.isEditSection) {
       axios
         .get(
-          `http://php-event-project.com/api/articles/${this.$route.params.id}/edit`
+          `${process.env.VUE_APP_BASE_URL}/api/articles/${this.$route.params.id}/edit`
         )
         .then(response => {
           console.log(`Article ${this.$route.params.id}`, response);
-          this.formData.title = response.data.title;
-          this.formData.subtitle = response.data.subtitle;
-          this.formData.content = response.data.content;
+          this.formData.title = response.data.data.title;
+          this.formData.subtitle = response.data.data.subtitle;
+          this.formData.content = response.data.data.content;
         })
         .catch(error => {
           console.log(error.response.data);
@@ -64,13 +64,14 @@ export default {
     createArticle() {
       this.clearObject(this.errors);
       axios
-        .post("http://php-event-project.com/api/articles", this.formData)
+        .post(`${process.env.VUE_APP_BASE_URL}/api/articles`, this.formData)
         .then(response => {
           for (let key in this.formData) {
             this.formData[key] = "";
           }
           console.log("New article", response);
           this.$emit("create");
+          this.$router.push(`/${this.$i18n.locale}/dashboard/page=1`);
         })
         .catch(error => {
           this.errors = error.response.data.errors;
@@ -83,7 +84,7 @@ export default {
       data._method = "put";
       axios
         .post(
-          `http://php-event-project.com/api/articles/${this.$route.params.id}`,
+          `${process.env.VUE_APP_BASE_URL}/api/articles/${this.$route.params.id}`,
           data
         )
         .then(response => {

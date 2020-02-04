@@ -51,7 +51,8 @@ export default {
   methods: {
     checkPaginationRoute() {
       if (
-          this.$route.params.num > this.pageData.pages ||
+        (this.pageData.pages !== 0 &&
+          this.$route.params.num > this.pageData.pages) ||
         isNaN(Number(this.$route.params.num))
       ) {
         this.$router.push(`/${this.$i18n.locale}/error`);
@@ -60,7 +61,7 @@ export default {
     loadPageData(pageNum) {
       axios
         .get(
-          `http://php-event-project.com/api/articles/{article}?page=${pageNum}`
+          `${process.env.VUE_APP_BASE_URL}/api/articles/{article}?page=${pageNum}`
         )
         .then(response => {
           this.pageData = response.data;

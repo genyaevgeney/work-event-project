@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreNews;
+use App\Http\Requests\UpdateNews;
 use App\Services\Article\ArticleService;
+use App\Http\Resources\ArticleResource;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class ArticleController extends Controller
 {
@@ -14,25 +15,6 @@ class ArticleController extends Controller
     public function __construct(ArticleService $articleService)
     {
         $this->articleService = $articleService;
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -45,7 +27,7 @@ class ArticleController extends Controller
     {
         $validated = $request->validated();
         $this->articleService->create($validated);
-        return 'Article has been created succesfully';
+        return response()->json('Article has been created succesfully', 200);
     }
 
     /**
@@ -56,7 +38,8 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        return $this->articleService->paginate();
+        $data = $this->articleService->paginate();
+        return response()->json($data, 200);
     }
 
     /**
@@ -67,7 +50,9 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        return $this->articleService->read($id);
+        $data = $this->articleService->getById($id);
+        return new ArticleResource($data);
+        // return response()->json($data, 200);
     }
 
     /**
@@ -77,22 +62,11 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateNews $request, int $id)
     {
-        $validated = $request->validate(
-            [
-                'title' => [
-                    'required',
-                    'max:30',
-                    'min:3',
-                    Rule::unique('articles')->ignore($id),
-                ],
-                'subtitle' => 'required|max:100|min:3',
-                'content' => 'required'
-            ]
-        );
+        $validated = $request->validated();
         $this->articleService->update($validated, $id);
-        return 'Article has been updated succesfully';
+        return response()->json('Article has been updated succesfully', 200);
     }
 
     /**
@@ -104,6 +78,6 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         $this->articleService->delete($id);
-        return 'Deleted successfully';
+        return response()->json('Deleted successfully', 200);
     }
 }

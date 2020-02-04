@@ -22,14 +22,9 @@
 // import axios from "axios";
 
 export default {
-  data() {
-    return {
-      langs: ["ru", "en"]
-    };
-  },
   computed: {
-    user() {
-      return this.$store.state.user;
+    langs () {
+      return this.$store.getters.LANGS;
     }
   },
   props: {
@@ -37,9 +32,6 @@ export default {
       type: String,
       default: ""
     }
-  },
-  created() {
-    if (this.pageName === "Homepage") this.pageName = this.$t("Homepage");
   }
 };
 </script>
