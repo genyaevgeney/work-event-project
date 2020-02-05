@@ -52,7 +52,6 @@ class ArticleController extends Controller
     {
         $data = $this->articleService->getById($id);
         return new ArticleResource($data);
-        // return response()->json($data, 200);
     }
 
     /**

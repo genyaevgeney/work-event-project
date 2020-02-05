@@ -77,5 +77,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 To run the tests, run the following command
 
 ```
-phpunit
+vendor/bin/phpunit
 ```
