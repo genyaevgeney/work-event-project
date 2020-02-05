@@ -7,7 +7,7 @@ use Tests\TestCase;
 class ControllerTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Test article controller functional
      *
      * @return void
      */

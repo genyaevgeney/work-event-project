@@ -13,6 +13,11 @@ class SaveArticle implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    /**
+     * Array of attributes
+     *
+     * @var array
+     */
     protected $attributes;
 
     /**
@@ -26,7 +31,7 @@ class SaveArticle implements ShouldQueue
     }
 
     /**
-     * Execute the job.
+     * Execute the job. Create article in database.
      *
      * @return void
      */

@@ -7,9 +7,11 @@ use App\Services\AbstractService;
 
 class ArticleService extends AbstractService implements ArticleInterface
 {
-    protected $repository;
-    protected $paginationRowsCount;
-
+    /**
+     * Initialize class properties
+     *
+     * @param ArticleRepository $articleRepository
+     */
     public function __construct(ArticleRepository $articleRepository)
     {
         $this->repository = $articleRepository;

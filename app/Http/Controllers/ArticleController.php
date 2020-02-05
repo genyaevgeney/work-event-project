@@ -10,8 +10,18 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    /**
+     * ArticleService class object
+     *
+     * @var object
+     */
     protected $articleService;
 
+    /**
+     * Initialize class properties
+     *
+     * @param ArticleService $articleService
+     */
     public function __construct(ArticleService $articleService)
     {
         $this->articleService = $articleService;
@@ -20,7 +30,7 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreNews  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreNews $request)
@@ -57,7 +67,7 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateNews  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
