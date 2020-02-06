@@ -36,6 +36,7 @@ class AbstractRepository implements AbstractInterface
 
     /**
      * Delete row in database
+     *
      * @param  int $id
      * @return void
      */
