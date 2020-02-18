@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     pageName() {
-      return this.$t("Dashboard");
+      return this.$t("ArticlePage");
     }
   },
   components: {
