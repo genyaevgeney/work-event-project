@@ -5,7 +5,7 @@
     <p class="content">{{ content }}</p>
     <router-link
       class="edit"
-      :to="'/' + $i18n.locale + '/article/edit/' + id"
+      :to="'/article/edit/' + id"
       >{{ $t("Edit") }}</router-link
     >
     <button @click="deleteArticle" class="delete">{{ $t("Delete") }}</button>
@@ -23,7 +23,7 @@ export default {
         .then(response => {
           console.log(response);
           this.$emit("delete");
-          this.$router.push(`/${this.$i18n.locale}/dashboard/page=1`);
+          this.$router.push(`/dashboard/page=1`);
         })
         .catch(error => {
           console.log(error.response.data);

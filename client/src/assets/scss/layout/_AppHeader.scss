@@ -27,6 +27,7 @@
 		}
 	}
 	.right-col {
+		display: flex;
 		&>* {
 			font-size: 18px;
 			color:black;
@@ -39,6 +40,52 @@
 			&:hover {
 				opacity: .7;
 				cursor: pointer;
+			}
+		}
+	}
+
+	.dropdown {
+		display: flex;
+		position: relative;
+		flex-direction: column;
+
+		.current-lang {
+			display: flex;
+			cursor: pointer;
+			align-items: center;
+
+			.lang {
+				margin-right: 6px;
+			}
+
+			.arrow {
+				$size:10px;
+				width: $size;
+				height: $size;
+			}
+		}
+
+		.lang-menu {
+			display: none;
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			border: 1px solid black;
+			border-radius: 8px;
+			background-color: white;
+			flex-direction: column;
+			padding: 10px;
+			transform: translateY(100%) translateX(-50%);
+
+			&.show {
+				display: flex;
+			}
+
+			span {
+				cursor: pointer;
+				&:not(:last-child) {
+					border-bottom: 1px solid black;
+				}
 			}
 		}
 	}

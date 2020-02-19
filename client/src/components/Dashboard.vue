@@ -55,7 +55,7 @@ export default {
           this.$route.params.num > this.pageData.pages) ||
         isNaN(Number(this.$route.params.num))
       ) {
-        this.$router.push(`/${this.$i18n.locale}/error`);
+        this.$router.push(`/error`);
       }
     },
     loadPageData(pageNum) {

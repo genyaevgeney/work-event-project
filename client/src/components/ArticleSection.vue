@@ -71,7 +71,7 @@ export default {
           }
           console.log("New article", response);
           this.$emit("create");
-          this.$router.push(`/${this.$i18n.locale}/dashboard/page=1`);
+          this.$router.push(`/dashboard/page=1`);
         })
         .catch(error => {
           this.errors = error.response.data.errors;
@@ -89,7 +89,7 @@ export default {
         )
         .then(response => {
           console.log("Updated article", response);
-          this.$router.push(`/${this.$i18n.locale}/dashboard/page=1`);
+          this.$router.push(`/dashboard/page=1`);
         })
         .catch(error => {
           this.errors = error.response.data.errors;
