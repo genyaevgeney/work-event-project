@@ -28,26 +28,38 @@ export default new Router({
           path: "dashboard/page=:num",
           name: "Dashboard",
           component: Dashboard,
-          props: true
+          props: true,
+          meta: {
+            title: 'Dashboard'
+          }
         },
         {
           path: "article/edit/:id",
           name: "EditPage",
           component: EditPage,
-          props: true
+          props: true,
+          meta: {
+            title: 'Edit page'
+          }
         },
         {
           path: "/",
           name: "Homepage",
           component: Homepage,
-          props: true
+          props: true,
+          meta: {
+            title: 'Homepage'
+          }
         }
       ]
     },
     {
       path: "*",
       name: "ErrorPage",
-      component: ErrorPage
+      component: ErrorPage,
+      meta: {
+        title: 'Error page'
+      }
     }
   ]
 });
