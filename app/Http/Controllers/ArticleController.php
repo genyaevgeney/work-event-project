@@ -46,7 +46,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(string $id)
     {
         $data = $this->articleService->paginate();
         return response()->json($data, 200);
@@ -58,7 +58,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         $data = $this->articleService->getById($id);
         return new ArticleResource($data);
@@ -84,7 +84,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $this->articleService->delete($id);
         return response()->json('Deleted successfully', 200);
